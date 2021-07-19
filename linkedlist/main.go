@@ -21,7 +21,7 @@ func (l *linkedlist) prepend(newnode *listnode) {
 }
 
 func (l *linkedlist) append (newnode *listnode) {
-	if(l.head == nil){
+	if(l.head == nil) {
 		l.head = newnode
 	} else {	
 		current := l.head
@@ -43,6 +43,23 @@ func (l *linkedlist) print(){
 		fmt.Printf("%d -> ", current.data)
 		current = current.next
 	}
+
+	fmt.Println()
+}
+
+func (l *linkedlist) reverse() *linkedlist {
+	current := l.head
+	var previous *listnode
+	var temp *listnode 
+
+	for current != nil {
+		temp = current.next
+		current.next = previous
+		previous = current 
+		current = temp
+	}
+
+	return &linkedlist{head: previous}	
 }
 
 func main() {
@@ -67,7 +84,12 @@ func main() {
 	mylinkedlist.append(node5)
 	mylinkedlist.append(node6)
 
+	fmt.Println("printing forward ... ")
 	mylinkedlist.print()
 
+	var reversedlistPointer *linkedlist = mylinkedlist.reverse()
+
+	fmt.Println("printing reverse ... ")
+	reversedlistPointer.print()
 
 }
