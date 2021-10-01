@@ -20,7 +20,7 @@ func (l *linkedlist) prepend(newnode *listnode) {
 	l.length++
 }
 
-func (l *linkedlist) append (newnode *listnode) {
+func (l *linkedlist) append(newnode *listnode) {
 	if(l.head == nil) {
 		l.head = newnode
 	} else {	
@@ -91,5 +91,4 @@ func main() {
 
 	fmt.Println("printing reverse ... ")
 	reversedlistPointer.print()
-
 }
